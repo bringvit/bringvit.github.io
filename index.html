@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Bringvit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     /* Global Styles */
     body {
@@ -11,6 +12,7 @@
       margin: 20px auto;
       background: #f4f6f8;
       color: #333;
+      padding: 0 12px; /* ✅ small padding for mobile */
     }
     h1 {
       text-align: center;
@@ -32,33 +34,22 @@
     /* Buttons */
     .btn {
       padding: 10px 16px;
-      margin-right: 6px;
+      margin: 6px 4px 6px 0; /* ✅ spacing works on mobile */
       border: none;
       border-radius: 8px;
       cursor: pointer;
       font-weight: 500;
       transition: 0.2s;
+      white-space: nowrap;
     }
     .btn:hover {
       opacity: 0.9;
       transform: translateY(-1px);
     }
-    .btn-primary {
-      background: #1E40AF;
-      color: #fff;
-    }
-    .btn-secondary {
-      background: #2563EB;
-      color: #fff;
-    }
-    .btn-accent {
-      background: #F59E0B;
-      color: #fff;
-    }
-    .btn-danger {
-      background: #DC2626;
-      color: #fff;
-    }
+    .btn-primary { background: #1E40AF; color: #fff; }
+    .btn-secondary { background: #2563EB; color: #fff; }
+    .btn-accent { background: #F59E0B; color: #fff; }
+    .btn-danger { background: #DC2626; color: #fff; }
 
     /* Inputs */
     input, textarea, select {
@@ -70,6 +61,7 @@
       border: 1px solid #ccc;
       font-size: 14px;
       transition: 0.2s;
+      box-sizing: border-box;
     }
     input:focus, textarea:focus, select:focus {
       border-color: #2563EB;
@@ -91,12 +83,14 @@
       align-items: center;
       justify-content: center;
       z-index: 999;
+      padding: 12px; /* ✅ for small screens */
     }
     .modal .box {
       background: #fff;
-      padding: 24px;
+      padding: 20px;
       border-radius: 12px;
-      min-width: 320px;
+      width: 100%; /* ✅ full width on mobile */
+      max-width: 400px; /* limit on larger screens */
       box-shadow: 0 8px 20px rgba(0,0,0,0.15);
       position: relative;
       animation: fadeIn 0.2s ease-out;
@@ -117,6 +111,16 @@
     /* Input small fix */
     #auth-section input {
       width: calc(100% - 12px);
+    }
+
+    /* ✅ Mobile Adjustments */
+    @media (max-width: 600px) {
+      h1 { font-size: 24px; }
+      .btn { width: 100%; display: block; margin: 8px 0; }
+      .card { padding: 16px; }
+      #list div { font-size: 14px; }
+      .modal .box { padding: 16px; }
+      input, textarea { font-size: 16px; } /* ✅ larger for mobile keyboards */
     }
   </style>
 </head>
